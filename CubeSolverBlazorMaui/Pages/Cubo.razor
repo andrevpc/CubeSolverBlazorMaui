@@ -1,0 +1,14 @@
+﻿@page "/cubo"
+
+<h3>Inicial</h3>
+
+<h4>@Texto</h4>
+
+<button @onclick="Change">Mudar</button>
+
+@code {
+    private string Texto => estado ? "Teste" : "Outro teste";
+    private bool estado = true;
+
+    private void Change() => estado = !estado;
+}

@@ -1,0 +1,6 @@
+﻿.test ::deep a {
+    background-color:red;
+    cursor: pointer;
+    padding: 16px;
+    border: solid 1px black;
+}
