@@ -23,13 +23,17 @@ h2 {
     font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.imgCubo2x2 ::deep{
-   width:50px;
-   height:30rem;
+.imgCubo2x2{
+   width:80%;
+   height:max-content;
 }
 
-.containerCubo2x2{
-    width:80%;
-    background-color:blue;
-    border:solid black 2px;
+.col ::deep{
+    background-color:pink;
 }
+
+.rol ::deep{
+    background-color:orange;
+}
+
+
