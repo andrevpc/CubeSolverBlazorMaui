@@ -23,17 +23,26 @@ h2 {
     font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.imgCubo2x2{
-   width:80%;
-   height:max-content;
+.imgCubo2x2 {
+    max-width: 79%;
+    /*max-height: 65%;*/
+    width: auto;
+    /*height: auto;*/
+}
+
+
+.imgCubo3x3 {
+    max-width: 90%;
+    width: auto;
+   
 }
 
 .col ::deep{
-    background-color:pink;
+    /*background-color:pink;*/
 }
 
 .rol ::deep{
-    background-color:orange;
+    /*background-color:orange;*/
 }
 
 
