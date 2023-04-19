@@ -1,0 +1,35 @@
+﻿body ::deep {
+    text-align: center;
+}
+
+html ::deep{
+    text-align:center;
+}
+
+.container ::deep {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width:100%;
+}
+
+.test ::deep a {
+    padding: 16px;
+    border: solid 1px black;
+}
+
+h2 {
+    color: black;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.imgCubo2x2 ::deep{
+   width:50px;
+   height:30rem;
+}
+
+.containerCubo2x2{
+    width:80%;
+    background-color:blue;
+    border:solid black 2px;
+}

@@ -1,0 +1,23 @@
+﻿body  {
+    text-align: center;
+}
+
+html  {
+    text-align: center;
+}
+
+.container  {
+    text-align: center;
+    display: flex;
+    align-items: center
+}
+
+.cubo2x2 a {
+    padding: 16px;
+    border: solid 1px black;
+}
+
+h2 {
+    color: black;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
