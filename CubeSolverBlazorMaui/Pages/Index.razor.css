@@ -1,54 +1,69 @@
-﻿body ::deep {
-    text-align: center;
-}
-
-html ::deep{
-    text-align:center;
-}
-
-.container ::deep {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    width:100%;
-}
-
-.top-row.px-4 ::deep {
-    background-color: #d8dee3;
-    padding: 2%;
-    width: 100%;
-    
-}
-
-article ::deep{
-    width:100%;
-}
-
-h2 {
-    color: black;
-    font-family: Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.imgCubo2x2 {
-    max-width: 79%;
-    /*max-height: 65%;*/
-    width: auto;
-    /*height: auto;*/
+﻿@media (max-width: 1300px) {
+    .slogan {
+        visibility:hidden;
+    }
 }
 
 
-.imgCubo3x3 {
-    max-width: 90%;
-    width: auto;
-   
-}
+    body ::deep {
+        text-align: center;
+    }
 
-.col ::deep{
-    /*background-color:pink;*/
-}
+    html ::deep {
+        text-align: center;
+    }
 
-.rol ::deep{
-    /*background-color:orange;*/
-}
+    .container ::deep {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .top-row.px-4 ::deep {
+        background-color: #02377D;
+        width: 100%;
+        min-height: 8rem;
+        max-height: 10rem;
+    }
+
+    .logo {
+        margin: 0;
+        min-height: 8rem;
+        max-height: 8rem;
+    }
+
+    .slogan {
+        max-height: 7rem;
+        width: 1000px;
+    }
+
+    article ::deep {
+        width: 100%;
+    }
+
+    h2 {
+        color: black;
+        font-family: Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .imgCubo2x2 {
+        max-width: 79%;
+        /*max-height: 65%;*/
+        width: auto;
+        /*height: auto;*/
+    }
 
 
+    .imgCubo3x3 {
+        max-width: 90%;
+        width: auto;
+    }
+
+    .col ::deep {
+        /*background-color:pink;*/
+    }
+
+    .rol ::deep {
+        /*background-color:orange;*/
+    }
