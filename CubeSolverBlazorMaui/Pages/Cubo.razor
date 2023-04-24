@@ -1,15 +1,81 @@
 ﻿@page "/cubo"
 
-<h3>Inicial</h3>
+<h3>3x3</h3>
 
-@*<button style="background-color:@bgcolor" @onclick="(() => Change(upper, 1))">U1</button>*@
-@*criar quadrados do desenho: https://www.blog.oncube.com.br/wp-content/uploads/2022/02/faces-768x581.png *@
-<div></div>
+<div>
+    <div class="date-grid" style="margin-left: 252px">
+
+        @for (int i = 0, j = 0; i < 3; i++, j += 3)
+        {
+            <div class="smallHolder">
+                <div style="background: @(Sides[0].pecas[j])" @onclick="(() => OnClick(0, j))"></div>
+                <div style="background: @(Sides[0].pecas[j + 1])" @onclick="(() => OnClick(0, j + 1))"></div>
+                <div style="background: @(Sides[0].pecas[j + 2])"></div>
+            </div>
+        }
+    </div>
+
+    <div style="display:flex; margin: 2px">
+        <div class="date-grid">
+            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            {
+                <div class="smallHolder">
+                    <div style="background: @(Sides[1].pecas[j])"></div>
+                    <div style="background: @(Sides[1].pecas[j + 1])"></div>
+                    <div style="background: @(Sides[1].pecas[j + 2])"></div>
+                </div>
+            }
+        </div>
+
+        <div class="date-grid">
+            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            {
+                <div class="smallHolder">
+                    <div style="background: @(Sides[2].pecas[j])"></div>
+                    <div style="background: @(Sides[2].pecas[j + 1])"></div>
+                    <div style="background: @(Sides[2].pecas[j + 2])"></div>
+                </div>
+            }
+        </div>
+
+        <div class="date-grid">
+            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            {
+                <div class="smallHolder">
+                    <div style="background: @(Sides[3].pecas[j])"></div>
+                    <div style="background: @(Sides[3].pecas[j + 1])"></div>
+                    <div style="background: @(Sides[3].pecas[j + 2])"></div>
+                </div>
+            }
+        </div>
+        <div class="date-grid">
+            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            {
+                <div class="smallHolder">
+                    <div style="background: @(Sides[4].pecas[j])"></div>
+                    <div style="background: @(Sides[4].pecas[j + 1])"></div>
+                    <div style="background: @(Sides[4].pecas[j + 2])"></div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="date-grid" style="margin-left: 252px">
+        @for (int i = 0, j = 0; i < 3; i++, j += 3)
+        {
+            <div class="smallHolder">
+                <div style="background: @(Sides[5].pecas[j])"></div>
+                <div style="background: @(Sides[5].pecas[j + 1])"></div>
+                <div style="background: @(Sides[5].pecas[j + 2])"></div>
+            </div>
+        }
+    </div>
+</div>
 
 @code {
+
     string bgcolor { get; set; } = Cor.Red.ToString().ToLower();
 
-    private Side[] Sides { get; set;} = new Side[6];
+    private Side[] Sides { get; set; } = new Side[6];
 
 
     private void Change(Side sd, int x)
@@ -24,30 +90,40 @@
     {
         base.OnInitialized();
 
-        foreach(Cor c in Enum.GetValues(typeof(Cor)))
+        foreach (Cor c in Enum.GetValues(typeof(Cor)))
         {
             Sides[(int)c] = new Side(c);
         }
     }
 
+    private void OnClick(int lado, int peca)
+    {
+        Sides[lado].pecas[peca] = Cor.Blue;
+
+
+        //this.Sides[lado].pecas[peca] =
+        //    (int)this.Sides[lado].pecas[peca] > 5 ?
+        //    Cor.Red : (Cor)((int)this.Sides[lado].pecas[peca] + 1);
+    }
+
     private class Side
     {
-        protected Cor[] pecas { get; set; } = new Cor[9];
+        public Cor[] pecas { get; set; } = new Cor[9];
 
         public Side(Cor cor)
         {
-            for(int i = 0; i < pecas.Length; i++)
+            for (int i = 0; i < pecas.Length; i++)
             {
                 pecas[i] = cor;
             }
         }
     }
 
-    private enum Cor
+    public enum Cor
     {
-        White, 
         Red,
         Blue,
+        White,
         Green,
         Yellow,
         Orange

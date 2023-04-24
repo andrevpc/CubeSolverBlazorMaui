@@ -1,0 +1,8 @@
+﻿.square {
+    width: 25%;
+    height: 99%;
+    flex-shrink: 0;
+    flex-grow: 1;
+    margin: 0.3%;
+    outline: 1px solid black;
+}
