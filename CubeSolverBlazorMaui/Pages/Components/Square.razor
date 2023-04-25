@@ -23,10 +23,11 @@
         //this.Sides[lado].pecas[peca] =
         //    (int)this.Sides[lado].pecas[peca] > 4 ?
         //    Cor.Red : (Cor)((int)this.Sides[lado].pecas[peca] + 1);
-
-        this.Color = (int)this.Color > 4 ? Cor.Red : (Cor)((int)this.Color + 1);
-
-        await ClickCallback.InvokeAsync((this.Color, this.Position.side, this.Position.piece));
+        if (this.Position.piece != 4)
+        {
+            this.Color = (int)this.Color > 4 ? Cor.Red : (Cor)((int)this.Color + 1);
+            await ClickCallback.InvokeAsync((this.Color, this.Position.side, this.Position.piece));
+        }
 
     }
 }

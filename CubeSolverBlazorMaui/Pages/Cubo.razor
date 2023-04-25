@@ -1,10 +1,12 @@
-﻿@page "/cubo"
+﻿@using System.Linq;
+
+@page "/cubo"
 
 <h3>3x3</h3>
+<p>@(CheckColorsError(Sides))</p>
 
 <div>
     <div class="date-grid" style="margin-left: 252px">
-
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
         {
             <div class="smallHolder">
@@ -21,9 +23,10 @@
             @for (int i = 0, j = 0; i < 3; i++, j += 3)
             {
                 <div class="smallHolder">
-                    <div style="background: @(Sides[1].pecas[j])"></div>
-                    <div style="background: @(Sides[1].pecas[j + 1])"></div>
-                    <div style="background: @(Sides[1].pecas[j + 2])"></div>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        <Square Color="this.Sides[1].pecas[j+k]" Position="(1, j+k)" ClickCallback="handleSquareClick" />
+                    }
                 </div>
             }
         </div>
@@ -32,9 +35,10 @@
             @for (int i = 0, j = 0; i < 3; i++, j += 3)
             {
                 <div class="smallHolder">
-                    <div style="background: @(Sides[2].pecas[j])"></div>
-                    <div style="background: @(Sides[2].pecas[j + 1])"></div>
-                    <div style="background: @(Sides[2].pecas[j + 2])"></div>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        <Square Color="this.Sides[2].pecas[j+k]" Position="(2, j+k)" ClickCallback="handleSquareClick" />
+                    }
                 </div>
             }
         </div>
@@ -43,9 +47,10 @@
             @for (int i = 0, j = 0; i < 3; i++, j += 3)
             {
                 <div class="smallHolder">
-                    <div style="background: @(Sides[3].pecas[j])"></div>
-                    <div style="background: @(Sides[3].pecas[j + 1])"></div>
-                    <div style="background: @(Sides[3].pecas[j + 2])"></div>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        <Square Color="this.Sides[3].pecas[j+k]" Position="(3, j+k)" ClickCallback="handleSquareClick" />
+                    }
                 </div>
             }
         </div>
@@ -53,9 +58,10 @@
             @for (int i = 0, j = 0; i < 3; i++, j += 3)
             {
                 <div class="smallHolder">
-                    <div style="background: @(Sides[4].pecas[j])"></div>
-                    <div style="background: @(Sides[4].pecas[j + 1])"></div>
-                    <div style="background: @(Sides[4].pecas[j + 2])"></div>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        <Square Color="this.Sides[4].pecas[j+k]" Position="(4, j+k)" ClickCallback="handleSquareClick" />
+                    }
                 </div>
             }
         </div>
@@ -64,9 +70,10 @@
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
         {
             <div class="smallHolder">
-                <div style="background: @(Sides[5].pecas[j])"></div>
-                <div style="background: @(Sides[5].pecas[j + 1])"></div>
-                <div style="background: @(Sides[5].pecas[j + 2])"></div>
+                @for (int k = 0; k < 3; k++)
+                {
+                    <Square Color="this.Sides[5].pecas[j+k]" Position="(5, j+k)" ClickCallback="handleSquareClick" />
+                }
             </div>
         }
     </div>
@@ -77,6 +84,12 @@
     string bgcolor { get; set; } = Cor.Red.ToString().ToLower();
 
     private Side[] Sides { get; set; } = new Side[6];
+
+    private bool CheckColorsError(params Side[] sides) => sides
+            .SelectMany(side => side.pecas)
+            .GroupBy(cor => cor)
+            .Select(group => group.Count())
+            .Any(count => count != 9);
 
     private void Change(Side sd, int x)
     {
@@ -115,9 +128,7 @@
         public Side(Cor cor)
         {
             for (int i = 0; i < pecas.Length; i++)
-            {
                 pecas[i] = cor;
-            }
         }
     }
 
