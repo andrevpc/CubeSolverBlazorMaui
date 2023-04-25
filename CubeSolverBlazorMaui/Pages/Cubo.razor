@@ -8,9 +8,10 @@
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
         {
             <div class="smallHolder">
-                <div style="background: @(Sides[0].pecas[j])" @onclick="(() => OnClick(0, j))"></div>
-                <div style="background: @(Sides[0].pecas[j + 1])" @onclick="(() => OnClick(0, j + 1))"></div>
-                <div style="background: @(Sides[0].pecas[j + 2])"></div>
+                @for (int k = 0; k < 3; k++)
+                {
+                    <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" /> 
+                }
             </div>
         }
     </div>
@@ -77,7 +78,6 @@
 
     private Side[] Sides { get; set; } = new Side[6];
 
-
     private void Change(Side sd, int x)
     {
         if (bgcolor == "red")
@@ -96,14 +96,16 @@
         }
     }
 
+    private void handleSquareClick((Cor color, int side, int piece) squareInfo)
+    {
+        this.Sides[squareInfo.side].pecas[squareInfo.piece] = squareInfo.color;
+    }
+
     private void OnClick(int lado, int peca)
     {
-        Sides[lado].pecas[peca] = Cor.Blue;
-
-
-        //this.Sides[lado].pecas[peca] =
-        //    (int)this.Sides[lado].pecas[peca] > 5 ?
-        //    Cor.Red : (Cor)((int)this.Sides[lado].pecas[peca] + 1);
+        this.Sides[lado].pecas[peca] =
+            (int)this.Sides[lado].pecas[peca] > 4 ?
+            Cor.Red : (Cor)((int)this.Sides[lado].pecas[peca] + 1);
     }
 
     private class Side

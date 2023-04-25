@@ -2,9 +2,9 @@
 
 <div 
     class="square" 
-    style="background: @(Color);"
+    style="background-color: @(Color);"
+    @onclick="OnClick"
 >
-teste
 </div>
 
 
@@ -12,5 +12,21 @@ teste
     [Parameter]
     public Cor Color { get; set; } = Cor.Red;
 
+    [Parameter]
+    public (int side, int piece) Position { get; set; }
 
+    [Parameter]
+    public EventCallback<(Cor color, int side, int piece)> ClickCallback { get; set; }
+
+    private async void OnClick()
+    {
+        //this.Sides[lado].pecas[peca] =
+        //    (int)this.Sides[lado].pecas[peca] > 4 ?
+        //    Cor.Red : (Cor)((int)this.Sides[lado].pecas[peca] + 1);
+
+        this.Color = (int)this.Color > 4 ? Cor.Red : (Cor)((int)this.Color + 1);
+
+        await ClickCallback.InvokeAsync((this.Color, this.Position.side, this.Position.piece));
+
+    }
 }
