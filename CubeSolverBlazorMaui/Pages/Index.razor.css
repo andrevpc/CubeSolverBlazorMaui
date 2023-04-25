@@ -1,69 +1,114 @@
-﻿@media (max-width: 1300px) {
+﻿
+@media (max-width: 800px) {
+
     .slogan {
-        visibility:hidden;
-    }
-}
-
-
-    body ::deep {
-        text-align: center;
+        visibility: hidden;
     }
 
-    html ::deep {
-        text-align: center;
-    }
-
-    .container ::deep {
-        text-align: center;
-        display: flex;
-        align-items: center;
-        width: 100%;
+    .logo {
+        margin-top: -35px;
+        min-height: 1rem;
+        max-height: 4rem;
+        /* visibility: hidden;*/
     }
 
     .top-row.px-4 ::deep {
         background-color: #02377D;
         width: 100%;
-        min-height: 8rem;
-        max-height: 10rem;
+        min-height: 3rem;
+        max-height: 4rem;
+    }
+
+    .divH {
+        height: min-content;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 800px) {
+
+    .divH {
+        height: min-content;
+        margin-bottom: 2rem;
+    }
+
+    .top-row.px-4 ::deep {
+        background-color: #02377D;
+        width: 100%;
+        min-height: 5rem;
+        max-height: 8rem;
     }
 
     .logo {
-        margin: 0;
-        min-height: 8rem;
+        margin-top: -65px;
+        margin-left: 30px;
+        min-height: 5rem;
         max-height: 8rem;
+        display: block;
     }
 
     .slogan {
         max-height: 7rem;
         width: 1000px;
     }
+}
 
-    article ::deep {
-        width: 100%;
-    }
+body ::deep {
+    text-align: center;
+}
 
-    h2 {
-        color: black;
-        font-family: Tahoma, Geneva, Verdana, sans-serif;
-    }
+html ::deep {
+    text-align: center;
+}
 
-    .imgCubo2x2 {
-        max-width: 79%;
-        /*max-height: 65%;*/
-        width: auto;
-        /*height: auto;*/
-    }
+.container ::deep {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
 
-    .imgCubo3x3 {
-        max-width: 90%;
-        width: auto;
-    }
 
-    .col ::deep {
-        /*background-color:pink;*/
-    }
+article ::deep {
+    width: 100%;
+}
 
-    .rol ::deep {
-        /*background-color:orange;*/
-    }
+h2 {
+    color: black;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.imgCubo2x2 {
+    max-width: 79%;
+    /*max-height: 65%;*/
+    width: auto;
+    /*height: auto;*/
+}
+
+
+.imgCubo3x3 {
+    max-width: 90%;
+    width: auto;
+}
+
+.col ::deep {
+    /*background-color:pink;*/
+}
+
+.rol ::deep {
+    /*background-color:orange;*/
+}
+
+.btn-outline-light ::deep  {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.btn-outline-light:hover ::deep {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+

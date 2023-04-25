@@ -12,12 +12,19 @@ html  {
     align-items: center
 }
 
-.cubo2x2 a {
-    padding: 16px;
-    border: solid 1px black;
-}
-
 h2 {
     color: black;
     font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-outline-light {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.btn-outline-light:hover {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }

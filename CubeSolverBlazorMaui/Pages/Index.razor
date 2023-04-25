@@ -1,9 +1,9 @@
 ﻿@page "/"
 
-<div class="top-row px-4" style="font-weight:600; ">
-    <img class="logo" src="./image/Logo.png"/>
-    <img class="slogan" src="./image/slogan.png" />
-
+<div class="divH">
+    <div class="top-row px-4" style="font-weight:600; ">
+    </div>
+    <img class="logo" src="./image/logoV2.png" />
 </div>
 
 @*<h2>O Desafio do Cubo Mágico Nunca Foi Tão Fácil</h2>*@
@@ -13,21 +13,28 @@
     <div class="containerImgs">
         <div class="row">
             <div class="col">
-                <NavLink class="cubo2x2" href="cubo">Cubo 2x2</NavLink>
+                <NavLink class="btn btn-outline-light" href="cubo" style="display:flex;flex-wrap: nowrap;flex-direction: column;">
+                    Cubo 2x2
+                   <img class="imgCubo2x2" src="./image/cubo2x2.png" alt="Cubo 2x2" />
+                    
+                </NavLink>
             </div>
             <div class="col">
-                <NavLink class="cubo3x2" href="cubo">Cubo 3x3</NavLink>
+                <NavLink class="btn btn-outline-light" href="cubo">
+                    Cubo 3x3
+                    <img class="imgCubo3x3" src="./image/cubo3x3.png" alt="Cubo 3x3" />
+                </NavLink>
             </div>
         </div>
 
 
-        <div class="row">
-            <div class="col">
-                <img class="imgCubo2x2" src="./image/cubo2x2.png" alt="Cubo 2x2" />
-            </div>
-            <div class="col">
-                <img class="imgCubo3x3" src="./image/cubo3x3.png" alt="Cubo 3x3" />
-            </div>
+        @*<div class="row">
+        <div class="col">
+        <img class="imgCubo2x2" src="./image/cubo2x2.png" alt="Cubo 2x2" />
         </div>
+        <div class="col">
+        <img class="imgCubo3x3" src="./image/cubo3x3.png" alt="Cubo 3x3" />
+        </div>
+        </div>*@
     </div>
 </div>
