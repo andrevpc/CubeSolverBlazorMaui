@@ -80,15 +80,13 @@ h2 {
 }
 
 .imgCubo2x2 {
-    max-width: 79%;
-    /*max-height: 65%;*/
+    max-width: 90%;
     width: auto;
-    /*height: auto;*/
 }
 
 
 .imgCubo3x3 {
-    max-width: 90%;
+    max-width: 88%;
     width: auto;
 }
 
@@ -100,15 +98,25 @@ h2 {
     /*background-color:orange;*/
 }
 
-.btn-outline-light ::deep  {
+.btn  {
+    border-radius: 50px;
+}
+
+.btn:hover ::deep {
+    border-radius: 30px;
+}
+
+.btn-outline-light ::deep {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .btn-outline-light:hover ::deep {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    border-radius: 10px;
 }
 
