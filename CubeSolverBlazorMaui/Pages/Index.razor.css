@@ -69,25 +69,28 @@ html ::deep {
 }
 
 
-
 article ::deep {
     width: 100%;
 }
 
 h2 {
-    color: black;
+    
     font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .imgCubo2x2 {
-    max-width: 90%;
-    width: auto;
+    max-width: 80%;
+    max-height: 80%;
+ /*   height:auto;
+    width: auto;*/
 }
 
 
 .imgCubo3x3 {
-    max-width: 88%;
+    max-width: 78%;
     width: auto;
+    
+    height: 75%;
 }
 
 .col ::deep {
@@ -104,6 +107,7 @@ h2 {
 
 .btn:hover ::deep {
     border-radius: 30px;
+    height: 70px;
 }
 
 .btn-outline-light ::deep {
@@ -111,6 +115,7 @@ h2 {
     flex-wrap: nowrap;
     flex-direction: column;
     border-radius: 10px;
+    
 }
 
 .btn-outline-light:hover ::deep {
