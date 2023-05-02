@@ -1,18 +1,18 @@
 ﻿@using System.Linq;
 
-@page "/cubo"
+@page "/cubo2"
 
-<h3>3x3</h3>
+<h3>2x2</h3>
 <p>@(CheckColorsError(Sides))</p>
 <p>@(Translate(Sides[0].pecas[0]))</p>
 <button @onclick="Solve">Solve</button>
 
 <div>
     <div class="date-grid" style="margin-left: 252px">
-        @for (int i = 0, j = 0; i < 3; i++, j += 3)
+        @for (int i = 0, j = 0; i < 2; i++, j += 2)
         {
             <div class="smallHolder">
-                @for (int k = 0; k < 3; k++)
+                @for (int k = 0; k < 2; k++)
                 {
                     <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" /> 
                 }
@@ -22,10 +22,10 @@
 
     <div style="display:flex; margin: 2px">
         <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            @for (int i = 0, j = 0; i < 2; i++, j += 2)
             {
                 <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                    @for (int k = 0; k < 2; k++)
                     {
                         <Square Color="this.Sides[1].pecas[j+k]" Position="(1, j+k)" ClickCallback="handleSquareClick" />
                     }
@@ -34,10 +34,10 @@
         </div>
 
         <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            @for (int i = 0, j = 0; i < 2; i++, j += 2)
             {
                 <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                    @for (int k = 0; k < 2; k++)
                     {
                         <Square Color="this.Sides[2].pecas[j+k]" Position="(2, j+k)" ClickCallback="handleSquareClick" />
                     }
@@ -46,10 +46,10 @@
         </div>
 
         <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            @for (int i = 0, j = 0; i < 2; i++, j += 2)
             {
                 <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                    @for (int k = 0; k < 2; k++)
                     {
                         <Square Color="this.Sides[3].pecas[j+k]" Position="(3, j+k)" ClickCallback="handleSquareClick" />
                     }
@@ -57,10 +57,10 @@
             }
         </div>
         <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
+            @for (int i = 0, j = 0; i < 2; i++, j += 2)
             {
                 <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                    @for (int k = 0; k < 2; k++)
                     {
                         <Square Color="this.Sides[4].pecas[j+k]" Position="(4, j+k)" ClickCallback="handleSquareClick" />
                     }
@@ -69,10 +69,10 @@
         </div>
     </div>
     <div class="date-grid" style="margin-left: 252px">
-        @for (int i = 0, j = 0; i < 3; i++, j += 3)
+        @for (int i = 0, j = 0; i < 2; i++, j += 2)
         {
             <div class="smallHolder">
-                @for (int k = 0; k < 3; k++)
+                @for (int k = 0; k < 2; k++)
                 {
                     <Square Color="this.Sides[5].pecas[j+k]" Position="(5, j+k)" ClickCallback="handleSquareClick" />
                 }
@@ -91,7 +91,7 @@
         .SelectMany(side => side.pecas)
         .GroupBy(cor => cor)
         .Select(group => group.Count())
-        .Any(count => count != 9);
+        .Any(count => count != 4);
 
     private void Solve()
     {
@@ -122,7 +122,7 @@
 
     private class Side
     {
-        public Cor[] pecas { get; set; } = new Cor[9];
+        public Cor[] pecas { get; set; } = new Cor[4];
 
         public Side(Cor cor)
         {
@@ -132,5 +132,5 @@
     }
 
     public byte Translate(Cor cor) => numBytes[(int)cor];
-
 }
+
