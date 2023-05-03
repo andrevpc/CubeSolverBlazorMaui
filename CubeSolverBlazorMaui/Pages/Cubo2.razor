@@ -3,9 +3,10 @@
 @page "/cubo2"
 
 <h3>2x2</h3>
-<p>@(CheckColorsError(Sides))</p>
-<p>@(Translate(Sides[0].pecas[0]))</p>
-<button @onclick="Solve">Solve</button>
+<button disabled="@(CheckColorsError(Sides))">
+    Solve
+</button>
+
 
 <div>
     <div class="date-grid" style="margin-left: 252px">
@@ -93,9 +94,37 @@
         .Select(group => group.Count())
         .Any(count => count != 4);
 
-    private void Solve()
+    public (byte[], byte[], byte[], byte[], byte[], byte[]) Solve()
     {
-        
+        byte[] cores0 = new byte[4];
+        byte[] cores1 = new byte[4];
+        byte[] cores2 = new byte[4];
+        byte[] cores3 = new byte[4];
+        byte[] cores4 = new byte[4];
+        byte[] cores5 = new byte[4];
+
+        var a = Sides
+        .SelectMany(x => x.pecas)
+        .Select(x => Translate(x))
+        .ToArray();
+
+        for (int i = 0; i < a.Count(); i++)
+        {
+            if (i <= 3)
+                cores0[i] = a[i];
+            else if (i <= 7)
+                cores1[i - 4] = a[i];
+            else if (i <= 11)
+                cores2[i - 8] = a[i];
+            else if (i <= 15)
+                cores3[i - 12] = a[i];
+            else if (i <= 19)
+                cores4[i - 16] = a[i];
+            else if (i <= 23)
+                cores5[i - 20] = a[i];
+        }
+
+        return (cores0, cores1, cores2, cores3, cores4, cores5);
     }
 
     protected override void OnInitialized()

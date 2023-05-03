@@ -9,6 +9,6 @@ public class Peca2x2
 
     public int[] getColor(byte cor)
     {
-
+        throw new NotImplementedException();
     }
 }

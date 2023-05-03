@@ -3,10 +3,11 @@
 @page "/cubo"
 
 <h3>3x3</h3>
-<p>@(CheckColorsError(Sides))</p>
-<p>@(Translate(Sides[0].pecas[0]))</p>
-<button @onclick="Solve">Solve</button>
+<button disabled="@(CheckColorsError(Sides))">
+    Solve
+</button>
 
+@*@onclick="Solve" *@
 <div>
     <div class="date-grid" style="margin-left: 252px">
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
@@ -93,9 +94,37 @@
         .Select(group => group.Count())
         .Any(count => count != 9);
 
-    private void Solve()
+    public (byte[], byte[], byte[], byte[], byte[], byte[]) Solve()
     {
-        
+        byte[] cores0 = new byte[9];
+        byte[] cores1 = new byte[9];
+        byte[] cores2 = new byte[9];
+        byte[] cores3 = new byte[9];
+        byte[] cores4 = new byte[9];
+        byte[] cores5 = new byte[9];
+
+        var a = Sides
+        .SelectMany(x => x.pecas)
+        .Select(x => Translate(x))
+        .ToArray();
+
+        for (int i = 0; i < a.Count(); i++)
+        {
+            if (i <= 8)
+                cores0[i] = a[i];
+            else if (i <= 17)
+                cores1[i - 9] = a[i];
+            else if (i <= 26)
+                cores2[i - 18] = a[i];
+            else if (i <= 35)
+                cores3[i - 27] = a[i];
+            else if (i <= 44)
+                cores4[i - 36] = a[i];
+            else if (i <= 53)
+                cores5[i - 45] = a[i];
+        }
+
+        return (cores0, cores1, cores2, cores3, cores4, cores5);
     }
 
     protected override void OnInitialized()
