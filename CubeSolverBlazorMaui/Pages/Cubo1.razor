@@ -6,7 +6,7 @@
 <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
     Solve
 </button>
-<p>@result + "a"</p>
+<p>@result</p>
 
 @*@onclick="Solve" *@
 <div>
@@ -128,19 +128,18 @@
 
         List<byte[]> cores = new List<byte[]>() { cores2, cores3, cores4, cores1, cores0 , cores5 };
 
-        result = cores2[0].ToString();
+        //result = cores2[0].ToString();
 
-        //Cubo cubinho = new Cubo();
+        Cubo cubinho = new Cubo();
 
-        //for(int i = 0; i < 5; i++)
-        //{
-        //    Face facezinha = new Face(cores[i]);
-        //    cubinho.addFace(facezinha, i);
-        //}
-        ////     
-        //Solver solucao = new Solver(cubinho);
-        //result = solucao.Cross();
-        // + solucao.FirstCorners() + solucao.CenterEdges() + solucao.TopCross() + solucao.TopCorners() + solucao.PLL1() + solucao.Minerva()
+        for(int i = 0; i < 6; i++)
+        {
+            Face facezinha = new Face(cores[i]);
+            cubinho.addFace(facezinha, i);
+        }
+        //     
+        Solver solucao = new Solver(cubinho);
+        result = solucao.Cross() + solucao.FirstCorners() + solucao.CenterEdges() + solucao.TopCross() + solucao.TopCorners() + solucao.PLL1() + solucao.Minerva();
     }
 
     protected override void OnInitialized()
