@@ -1,11 +1,12 @@
 ﻿@using System.Linq;
-
+@using CubeSolverBlazorMaui.CubeSolver;
 @page "/cubo"
 
 <h3>3x3</h3>
-<button disabled="@(CheckColorsError(Sides))">
+<button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
     Solve
 </button>
+<p>@result + "a"</p>
 
 @*@onclick="Solve" *@
 <div>
@@ -85,7 +86,7 @@
 @code {
 
     private Side[] Sides { get; set; } = new Side[6];
-
+    string result = "teste";
     public byte[] numBytes { get; set; } = { 82, 66, 87, 71, 89, 79 };
 
     private bool CheckColorsError(params Side[] sides) => sides
@@ -94,7 +95,7 @@
         .Select(group => group.Count())
         .Any(count => count != 9);
 
-    public (byte[], byte[], byte[], byte[], byte[], byte[]) Solve()
+    public void Solve()
     {
         byte[] cores0 = new byte[9];
         byte[] cores1 = new byte[9];
@@ -102,6 +103,7 @@
         byte[] cores3 = new byte[9];
         byte[] cores4 = new byte[9];
         byte[] cores5 = new byte[9];
+
 
         var a = Sides
         .SelectMany(x => x.pecas)
@@ -123,19 +125,22 @@
             else if (i <= 53)
                 cores5[i - 45] = a[i];
         }
-        Cubo cubinho = new Cubo();
-//      COLOCAR ESSA LINDEZA EM UM FOR -> 6
-//     Face facezinha = new Face(cores);
-//     cubinho.addFace(facezinha, i);
-        Solver solucao = new Solver(cubinho);
-        Console.WriteLine(solucao.Cross());
-        Console.WriteLine(solucao.FirstCorners());
-        Console.WriteLine(solucao.CenterEdges());
-        Console.WriteLine(solucao.TopCross());
-        Console.WriteLine(solucao.TopCorners());
-        Console.WriteLine(solucao.PLL1());
-        Console.WriteLine(solucao.Minerva());
-        return (cores0, cores1, cores2, cores3, cores4, cores5);
+
+        List<byte[]> cores = new List<byte[]>() { cores2, cores3, cores4, cores1, cores0 , cores5 };
+
+        result = cores2[0].ToString();
+
+        //Cubo cubinho = new Cubo();
+
+        //for(int i = 0; i < 5; i++)
+        //{
+        //    Face facezinha = new Face(cores[i]);
+        //    cubinho.addFace(facezinha, i);
+        //}
+        ////     
+        //Solver solucao = new Solver(cubinho);
+        //result = solucao.Cross();
+        // + solucao.FirstCorners() + solucao.CenterEdges() + solucao.TopCross() + solucao.TopCorners() + solucao.PLL1() + solucao.Minerva()
     }
 
     protected override void OnInitialized()
