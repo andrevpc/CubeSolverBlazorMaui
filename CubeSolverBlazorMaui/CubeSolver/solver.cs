@@ -1,3 +1,5 @@
+namespace CubeSolverBlazorMaui.CubeSolver;
+
 public class Solver
 {
     public Cubo cubinho { get; set; }

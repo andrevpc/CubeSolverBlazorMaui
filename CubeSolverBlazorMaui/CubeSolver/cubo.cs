@@ -1,3 +1,5 @@
+namespace CubeSolverBlazorMaui.CubeSolver;
+
 public class Face
 {
     public byte[] values { get; set; }

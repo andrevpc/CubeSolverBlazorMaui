@@ -123,7 +123,18 @@
             else if (i <= 53)
                 cores5[i - 45] = a[i];
         }
-
+        Cubo cubinho = new Cubo();
+//      COLOCAR ESSA LINDEZA EM UM FOR -> 6
+//     Face facezinha = new Face(cores);
+//     cubinho.addFace(facezinha, i);
+        Solver solucao = new Solver(cubinho);
+        Console.WriteLine(solucao.Cross());
+        Console.WriteLine(solucao.FirstCorners());
+        Console.WriteLine(solucao.CenterEdges());
+        Console.WriteLine(solucao.TopCross());
+        Console.WriteLine(solucao.TopCorners());
+        Console.WriteLine(solucao.PLL1());
+        Console.WriteLine(solucao.Minerva());
         return (cores0, cores1, cores2, cores3, cores4, cores5);
     }
 

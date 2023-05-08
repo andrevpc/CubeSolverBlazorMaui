@@ -1,3 +1,6 @@
+namespace CubeSolverBlazorMaui.CubeSolver;
+
+
 public class Cubo2x2
 {
 
