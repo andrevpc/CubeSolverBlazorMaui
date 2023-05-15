@@ -2,6 +2,27 @@
 @using CubeSolverBlazorMaui.CubeSolver;
 @page "/cubo"
 
+
+
+<div class="divH" style="margin-bottom:0">
+    <div class="top-row px-4" style="font-weight:600; ">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/">|</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cubo2">2x2</a>
+            </li>
+        </ul>
+    </div>
+    <img class="logo" src="./image/logoV2.png">
+</div>
+
+
+
 <h3>3x3</h3>
 
 <a href="/">
@@ -22,13 +43,14 @@
 
 @*@onclick="Solve" *@
 <div>
+
     <div class="date-grid" style="margin-left: 252px">
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
         {
             <div class="smallHolder">
                 @for (int k = 0; k < 3; k++)
                 {
-                    <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" /> 
+                    <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" />
                 }
             </div>
         }
@@ -93,6 +115,12 @@
             </div>
         }
     </div>
+
+
+    <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
+        Solve
+    </button>
+    <p>@result</p>
 </div>
 
 @code {
@@ -138,15 +166,16 @@
                 cores5[i - 45] = a[i];
         }
 
-        List<byte[]> cores = new List<byte[]>() { cores2, cores3, cores4, cores1, cores0 , cores5 };
+        List<byte[]> cores = new List<byte[]>() { cores2, cores3, cores4, cores1, cores0, cores5 };
 
         Cubo cubinho = new Cubo();
 
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             Face facezinha = new Face(cores[i]);
             cubinho.addFace(facezinha, i);
         }
+        //
 
         Solver solucao = new Solver(cubinho);
         result = solucao.Cross() + solucao.FirstCorners() + solucao.CenterEdges() + solucao.TopCross() + solucao.TopCorners() + solucao.PLL1() + solucao.Minerva();
