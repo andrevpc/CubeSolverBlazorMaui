@@ -2,16 +2,20 @@
 @using CubeSolverBlazorMaui.CubeSolver;
 @page "/cubo"
 
-<div class="divH">
+
+
+<div class="divH" style="margin-bottom:0">
     <div class="top-row px-4" style="font-weight:600; ">
         <ul class="nav justify-content-center">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link active" href="/">|</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/cubo2">2x2</a>
             </li>
-           
         </ul>
     </div>
     <img class="logo" src="./image/logoV2.png">
@@ -20,13 +24,9 @@
 
 
 
-
-<NavLink href="/">voltar</NavLink>
-
 @*@onclick="Solve" *@
 <div>
 
-    <h3>3x3</h3>
     <div class="date-grid" style="margin-left: 252px">
         @for (int i = 0, j = 0; i < 3; i++, j += 3)
         {

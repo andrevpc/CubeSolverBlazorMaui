@@ -16,12 +16,23 @@
         width: 100%;
         min-height: 3rem;
         max-height: 4rem;
-        display:flex;
+        display: flex;
+        align-content: baseline;
+        justify-content:space-between;
+        align-items: center;
     }
 
     .divH {
         height: min-content;
-        margin-bottom: 1rem;
+
+    }
+
+    ul.nav.justify-content-center ::deep {
+        font-size: 1rem;
+    }
+
+    .divCubo {
+        display: flex;
     }
 }
 
@@ -39,9 +50,9 @@
         max-height: 8rem;
         align-content: baseline;
         display: flex;
-        align-content:baseline;
-        justify-content:center;
-        align-items:center;
+        align-content: baseline;
+        justify-content: center;
+        align-items: center;
     }
 
     .logo {
@@ -57,6 +68,14 @@
         max-height: 7rem;
         width: 1000px;
     }
+
+    ul.nav.justify-content-center ::deep {
+        font-size: 2rem;
+    }
+
+    .divCubo {
+        display: flex;
+    }
 }
 
 body {
@@ -65,7 +84,6 @@ body {
 
 * {
     box-sizing: border-box;
-
 }
 
 .date-grid {
@@ -90,3 +108,5 @@ body {
         margin: 0.3%;
         outline: 1px solid black;
     }
+
+
