@@ -45,12 +45,15 @@
         min-height: 5rem;
         max-height: 8rem;
         display: block;
+        background-color:none;
     }
 
     .slogan {
         max-height: 7rem;
         width: 1000px;
     }
+
+    
 }
 
 body ::deep {

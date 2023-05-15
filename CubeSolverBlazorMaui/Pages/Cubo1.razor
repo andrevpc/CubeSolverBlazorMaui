@@ -2,11 +2,20 @@
 @using CubeSolverBlazorMaui.CubeSolver;
 @page "/cubo"
 
+<div class="divH">
+    <div class="top-row px-4" style="font-weight:600; ">
+    </div>
+    <img class="logo" src="./image/logoV2.png" 
+    >
+</div>
+
 <h3>3x3</h3>
 <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
     Solve
 </button>
 <p>@result</p>
+
+<NavLink href="/">voltar</NavLink>
 
 @*@onclick="Solve" *@
 <div>
