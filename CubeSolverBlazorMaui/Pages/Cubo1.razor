@@ -2,8 +2,6 @@
 @using CubeSolverBlazorMaui.CubeSolver;
 @page "/cubo"
 
-
-
 <div class="divH" style="margin-bottom:0">
     <div class="top-row px-4" style="font-weight:600; ">
         <ul class="nav justify-content-center">
@@ -35,9 +33,6 @@
     Reset
 </button>
 
-<p>@result</p>
-
-@*@onclick="Solve" *@
 <div>
 
     <div class="date-grid" style="margin-left: 252px">
@@ -111,12 +106,23 @@
             </div>
         }
     </div>
+</div>
 
-
-    <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
-        Solve
-    </button>
+<div hidden="@(result == "")">
     <p>@result</p>
+    @for (int i = 0; i < resultSteps().Count(); i++)
+    {
+        <p>@steps[i]</p>
+        <div style="display: flex; flex-wrap: wrap">
+            @for (int j = 0; j < resultSteps()[i].Split(" ").Count(); j++)
+            {
+                <div>
+                    <img src="/Images/@(resultSteps()[i].Split(" ")[j]+".png")" style="max-height: 150px">
+                    <p>@resultSteps()[i].Split(" ")[j]</p>
+                </div>
+            }
+        </div>
+    }
 </div>
 
 @code {
@@ -124,6 +130,8 @@
     private Side[] Sides { get; set; } = new Side[6];
     string result = "";
     public byte[] numBytes { get; set; } = { 82, 66, 87, 71, 89, 79 };
+    public List<string> steps { get; set; } = new() { "Cross", "FirstCorners", "CenterEdges", "TopCross", "TopCorners", "PLL1", "Minerva" };
+    public string[] aux { get; set; }
 
     private bool CheckColorsError(params Side[] sides) => sides
         .SelectMany(side => side.pecas)
@@ -174,7 +182,7 @@
         //
 
         Solver solucao = new Solver(cubinho);
-        result = solucao.Cross() + solucao.FirstCorners() + solucao.CenterEdges() + solucao.TopCross() + solucao.TopCorners() + solucao.PLL1() + solucao.Minerva();
+        result = solucao.Cross() + "," + solucao.FirstCorners() + "," + solucao.CenterEdges() + "," + solucao.TopCross() + "," + solucao.TopCorners() + "," + solucao.PLL1() + "," + solucao.Minerva();
     }
 
     protected override void OnInitialized()
@@ -218,6 +226,8 @@
         }
         result = "";
     }
+
+    private string[] resultSteps() => result.Split(",");
 
     public byte Translate(Cor cor) => numBytes[(int)cor];
 
