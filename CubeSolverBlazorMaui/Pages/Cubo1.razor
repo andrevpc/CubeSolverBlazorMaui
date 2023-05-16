@@ -8,13 +8,17 @@
     <div class="top-row px-4" style="font-weight:600; ">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="home" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                    </svg>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/">|</a>
+                <a class="nav-link active" style="color: #0071c1;" href="/">|</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cubo2">2x2</a>
+                <img src="./image/2v2.png">
             </li>
         </ul>
     </div>
@@ -23,13 +27,6 @@
 
 
 
-<h3>3x3</h3>
-
-<a href="/">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-    </svg>
-</a>
 
 <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
     Solve
@@ -42,86 +39,91 @@
 <p>@result</p>
 
 @*@onclick="Solve" *@
-<div>
+<div class="container">
+    <div class="cubo">
+        <div>
 
-    <div class="date-grid" style="margin-left: 252px">
-        @for (int i = 0, j = 0; i < 3; i++, j += 3)
-        {
-            <div class="smallHolder">
-                @for (int k = 0; k < 3; k++)
+            <div class="date-grid" style="margin-left: 252px">
+                @for (int i = 0, j = 0; i < 3; i++, j += 3)
                 {
-                    <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" />
+                    <div class="smallHolder">
+                        @for (int k = 0; k < 3; k++)
+                        {
+                            <Square Color="this.Sides[0].pecas[j+k]" Position="(0, j+k)" ClickCallback="handleSquareClick" />
+                        }
+                    </div>
                 }
             </div>
-        }
-    </div>
 
-    <div style="display:flex; margin: 2px">
-        <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
-            {
-                <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+            <div style="display:flex; margin: 2px">
+                <div class="date-grid">
+                    @for (int i = 0, j = 0; i < 3; i++, j += 3)
                     {
-                        <Square Color="this.Sides[1].pecas[j+k]" Position="(1, j+k)" ClickCallback="handleSquareClick" />
+                        <div class="smallHolder">
+                            @for (int k = 0; k < 3; k++)
+                            {
+                                <Square Color="this.Sides[1].pecas[j+k]" Position="(1, j+k)" ClickCallback="handleSquareClick" />
+                            }
+                        </div>
                     }
                 </div>
-            }
-        </div>
 
-        <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
-            {
-                <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                <div class="date-grid">
+                    @for (int i = 0, j = 0; i < 3; i++, j += 3)
                     {
-                        <Square Color="this.Sides[2].pecas[j+k]" Position="(2, j+k)" ClickCallback="handleSquareClick" />
+                        <div class="smallHolder">
+                            @for (int k = 0; k < 3; k++)
+                            {
+                                <Square Color="this.Sides[2].pecas[j+k]" Position="(2, j+k)" ClickCallback="handleSquareClick" />
+                            }
+                        </div>
                     }
                 </div>
-            }
-        </div>
 
-        <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
-            {
-                <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                <div class="date-grid">
+                    @for (int i = 0, j = 0; i < 3; i++, j += 3)
                     {
-                        <Square Color="this.Sides[3].pecas[j+k]" Position="(3, j+k)" ClickCallback="handleSquareClick" />
+                        <div class="smallHolder">
+                            @for (int k = 0; k < 3; k++)
+                            {
+                                <Square Color="this.Sides[3].pecas[j+k]" Position="(3, j+k)" ClickCallback="handleSquareClick" />
+                            }
+                        </div>
                     }
                 </div>
-            }
-        </div>
-        <div class="date-grid">
-            @for (int i = 0, j = 0; i < 3; i++, j += 3)
-            {
-                <div class="smallHolder">
-                    @for (int k = 0; k < 3; k++)
+                <div class="date-grid">
+                    @for (int i = 0, j = 0; i < 3; i++, j += 3)
                     {
-                        <Square Color="this.Sides[4].pecas[j+k]" Position="(4, j+k)" ClickCallback="handleSquareClick" />
+                        <div class="smallHolder">
+                            @for (int k = 0; k < 3; k++)
+                            {
+                                <Square Color="this.Sides[4].pecas[j+k]" Position="(4, j+k)" ClickCallback="handleSquareClick" />
+                            }
+                        </div>
                     }
                 </div>
-            }
-        </div>
-    </div>
-    <div class="date-grid" style="margin-left: 252px">
-        @for (int i = 0, j = 0; i < 3; i++, j += 3)
-        {
-            <div class="smallHolder">
-                @for (int k = 0; k < 3; k++)
+            </div>
+            <div class="date-grid" style="margin-left: 252px">
+                @for (int i = 0, j = 0; i < 3; i++, j += 3)
                 {
-                    <Square Color="this.Sides[5].pecas[j+k]" Position="(5, j+k)" ClickCallback="handleSquareClick" />
+                    <div class="smallHolder">
+                        @for (int k = 0; k < 3; k++)
+                        {
+                            <Square Color="this.Sides[5].pecas[j+k]" Position="(5, j+k)" ClickCallback="handleSquareClick" />
+                        }
+                    </div>
                 }
             </div>
-        }
+
+
+            <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
+                Solve
+            </button>
+            <p>@result</p>
+        </div>
     </div>
-
-
-    <button @onclick="Solve" disabled="@(CheckColorsError(Sides))">
-        Solve
-    </button>
-    <p>@result</p>
 </div>
+
 
 @code {
 
